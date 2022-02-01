@@ -63,12 +63,8 @@ namespace Test
                         {
                             Console.WriteLine("Enter new product name");
                             var New_ProductName = Console.ReadLine();
-                            var entity = context.Entry(new Product
-                            {
-                                Id = Update_Id,
-                                ProductName = New_ProductName
-                            });
-                            entity.State = EntityState.Modified;
+                            Product product = context.products.Find(Update_Id);
+                            product.ProductName=New_ProductName;
                             context.SaveChanges();
                             break;
                         }
@@ -76,27 +72,21 @@ namespace Test
                         {
                             Console.WriteLine("Enter new stock amount");
                             var New_StockAmount = Convert.ToInt32(Console.ReadLine());
-                            var entity = context.Entry(new Product
-                            {
-                                Id = Update_Id,
-                                StockAmount = New_StockAmount
-                            });
-                            entity.State = EntityState.Modified;
+                            Product product = context.products.Find(Update_Id);
+                            product.StockAmount = New_StockAmount;
                             context.SaveChanges();
                             break;
+                            
                         }
                     case 3:
                         {
                             Console.WriteLine("Enter new unit price");
                             var New_UnitPrice = Convert.ToInt32(Console.ReadLine());
-                            var entity = context.Entry(new Product
-                            {
-                                Id = Update_Id,
-                                UnitPrice = New_UnitPrice
-                            });
-                            entity.State = EntityState.Modified;
+                            Product product = context.products.Find(Update_Id);
+                            product.UnitPrice = New_UnitPrice;
                             context.SaveChanges();
                             break;
+                           
                         }
                     default:
                         Console.WriteLine("Incorrect entry");
